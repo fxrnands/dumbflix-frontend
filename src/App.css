@@ -1,0 +1,13 @@
+.detailCard {
+    position: relative;
+}
+
+.detailCard::after {
+    content: 'In Play Now';
+    position: absolute;
+    display: block;
+    color: white;
+    font-weight: bold;
+    top: 45%;
+    left: 35%;
+}
