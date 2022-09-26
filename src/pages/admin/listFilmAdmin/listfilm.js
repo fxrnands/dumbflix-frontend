@@ -19,7 +19,7 @@ function Listfilm() {
   return (
     <>
       <div style={{ padding: "4rem", marginTop: "40px" }}>
-        <div style={{ backgroundColor: "black", marginBottom: "40px"}} className="d-flex">
+        <div style={{ backgroundColor: "black", marginBottom: "40px" }} className="d-flex">
           <div className="d-flex">
             <h2 className="text-light ms-4"> List Film</h2>
           </div>
@@ -31,7 +31,7 @@ function Listfilm() {
         </div>
         <div className="containerCard">
           {film?.slice(0, 12).map((item) => (
-            <Link to="/detailfilm">
+            <Link to={`/admin/detail/${item.id}`}>
               <div className="box" key={item.id}>
                 <div className="imgBx">
                   <img src={item.thumbnailFilm} alt="" />
