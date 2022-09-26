@@ -21,15 +21,6 @@ function AdDetailPage() {
       <div className="video-control">
         <iframe src={film?.linkFilm} allow="autoplay; encrypted-media" allowFullScreen title="video" width="900px" height="300px" />
       </div>
-      {/* <div style={{ backgroundColor: "black" }}>
-        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-          <Button className="btn-addepisode" onClick={handleShow}>
-            Add Episode
-          </Button>
-
-          <AddEpisode show={show} handleClose={handleClose} />
-        </div>
-      </div> */}
       <div className="detail-bot">
         <div className="detail-desc">
           <div className="img-mov me-3">
