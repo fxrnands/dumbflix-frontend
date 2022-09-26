@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { API, setAuthToken } from "../../config/api";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { UserContext } from "../../context/userContext";
 
 if (localStorage.token) {

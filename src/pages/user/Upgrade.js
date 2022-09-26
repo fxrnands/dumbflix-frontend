@@ -15,9 +15,6 @@ function Upgrade() {
 
   let navigate = useNavigate();
 
-  const [previewSrc, setPreviewSrc] = useState(null);
-  const [file, setFile] = useState(null);
-
   useEffect(() => {
     //change this to the script source you want to load, for example this is snap.js sandbox env
     const midtransScriptUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
@@ -84,92 +81,49 @@ function Upgrade() {
     }
   });
 
-  const onChangeFiles = (e) => {
-    let fileInfo = e.target.files[0];
-    setFile(fileInfo);
-    let reader = new FileReader();
-
-    if (e.target.files.length === 0) {
-      return;
-    }
-
-    reader.onloadend = (e) => {
-      setPreviewSrc([reader.result]);
-    };
-
-    reader.readAsDataURL(fileInfo);
-  };
-
-  const inputFileRef = useRef(null);
-
-  const onBtnClick = () => {
-    inputFileRef.current.click();
-  };
   return (
     <div className="payment-container">
       <div className="payment-details">
-        <div className="payment-desc">
-          <h1
-            style={{
-              marginBottom: "30px",
-            }}
-          >
-            Premium
-          </h1>
-          <p>
-            GET YOUR PREMIUM STATUS NOW ONLY 30K IDR{" "}
-            <span className="red">DUMBFLIX </span> <br />{" "}
-            <span className="red">DUMBFLIX </span> : 0981312323
-          </p>
-          <form>
-            <div className="form-payment">
-              <button
-                type="button"
-                onClick={() => onBtnClick()}
-                className="btn-light"
-                style={{
-                  width: "100%",
-                  height: "50px",
-                  fontSize: "18px",
-                  textAlign: "left",
-                  padding: "0 10px",
-                }}
-              >
-                Attach proof of transfer{" "}
-                <div
+        {state.user.subscribe == false ? (
+          <div className="payment-desc">
+            <h1
+              style={{
+                marginBottom: "60px",
+              }}
+            >
+              Premium
+            </h1>
+            <p>
+              Dengan berlangganan Premium dengan harga Rp. 30.000,- Anda bisa
+              menikmati streaming film-film yang kekinian dari{" "}
+              <span className="red">DUMBFLIX </span> <br />{" "}
+              <span className="red">DUMBFLIX </span> : 0981312323
+            </p>
+            <form>
+              <div className="form-payment">
+                <button
+                  onClick={(e) => handleBuy.mutate(e)}
+                  type="submit"
+                  className="btnsub"
                   style={{
-                    float: "right",
-                    display: "inline",
-                    fontSize: "20px",
+                    height: "35px",
+                    fontSize: "16px",
+                    marginTop: "25px",
                   }}
                 >
-                  <img src={clip} alt="" />
-                </div>
-              </button>
-              <input
-                onChange={(e) => onChangeFiles(e)}
-                type="file"
-                name="file"
-                ref={inputFileRef}
-                style={{ display: "none" }}
-              />
-              <img src={previewSrc} alt="" className="preview-src" />
-
-              <button
-                onClick={(e) => handleBuy.mutate(e)}
-                type="submit"
-                className="btnsub"
-                style={{
-                  height: "35px",
-                  fontSize: "16px",
-                  marginTop: "15px",
-                }}
-              >
-                Send
-              </button>
-            </div>
-          </form>
-        </div>
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        ) : (
+          <div>
+            <h3>
+              Akun Anda sudah premium! Silahkan nikmati berbagai macam film yang
+              ada ..
+            </h3>
+          </div>
+        )}
       </div>
     </div>
   );
