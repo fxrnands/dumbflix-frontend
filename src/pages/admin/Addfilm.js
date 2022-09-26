@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { CgAttachment } from "react-icons/cg";
-import { AiOutlinePlus } from "react-icons/ai";
 import { API } from "../../config/api";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
@@ -13,13 +11,13 @@ function Addfilm() {
 
   let navigate = useNavigate();
 
-  const [categories, setCategories] = useState([]); //Store all category data
-  // const [categoryId, setCategoryId] = useState(); //Save the selected category id
-  const [preview, setPreview] = useState(null); //For image preview
+  const [categories, setCategories] = useState([]);
+  const [preview, setPreview] = useState(null);
 
   const [form, setForm] = useState({
     title: "",
     thumbnailFilm: "",
+    linkFilm: "",
     year: "",
     desc: "",
     categoryId: "",
@@ -63,13 +61,13 @@ function Addfilm() {
       const formData = new FormData();
       formData.set("title", form.title);
       formData.set("thumbnailFilm", form.thumbnailFilm[0], form.thumbnailFilm[0].name);
+      formData.set("linkFilm", form.linkFilm);
       formData.set("year", form.year);
       formData.set("desc", form.desc);
       formData.set("category_id", form.categoryId);
 
       console.log(form);
 
-      // Insert film data
       const response = await API.post("/film", formData, config);
       console.log(response);
 
@@ -121,6 +119,9 @@ function Addfilm() {
                   <Form.Control type="file" id="fileattach" name="thumbnailFilm" onChange={handleChange} hidden />
                 </Form.Group>
               </div>
+            </div>
+            <div className="col-10 d-flex justify-content-center">
+              <Form.Control type="text" placeholder="Link Film" name="linkFilm" onChange={handleChange} className="bg-dark text-white" />
             </div>
             <div className="col-10 d-flex justify-content-center">
               <Form.Control type="number" placeholder="Year" name="year" onChange={handleChange} className="bg-dark text-white" />
