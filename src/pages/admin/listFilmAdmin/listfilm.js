@@ -31,7 +31,7 @@ function Listfilm() {
         </div>
         <div className="containerCard">
           {film?.slice(0, 12).map((item) => (
-            <Link to="/detailFilm">
+            <Link to="/detailfilm">
               <div className="box" key={item.id}>
                 <div className="imgBx">
                   <img src={item.thumbnailFilm} alt="" />

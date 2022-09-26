@@ -24,7 +24,6 @@ function DetailPage() {
       setAuthToken(localStorage.token);
     }
 
-    // Redirect subscribe
     if (state.user.subscribe === false) {
       navigate("/user/upgrade");
     }
