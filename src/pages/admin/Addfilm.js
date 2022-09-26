@@ -83,7 +83,7 @@ function Addfilm() {
 
   return (
     <>
-      <div style={{ backgroundColor: "black", marginTop: "11vh" }}>
+      <div style={{ backgroundColor: "black", marginTop: "13vh" }}>
         <div>
           <h2 className="text-light col-2 d-flex justify-content-end">Add Film</h2>
         </div>
